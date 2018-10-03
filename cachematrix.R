@@ -8,8 +8,12 @@
 ## 3. set the value of the inverse
 ## 4. get the value of the inverse
 
+##Here we use the <<- operator to assign the value to an object in an environment that is different from the current environment
+
+## We cache the inverse of variable matrix x in variable inv
+
 makeCacheMatrix <- function(x = matrix()) {
-inv <- NULL
+  inv <- NULL
   set <- function(y) {
           x <<- y
           inv <<- NULL
@@ -25,8 +29,9 @@ inv <- NULL
 
 
 ## This function computes the inverse of the special "matrix" returned by makeCacheMatrix above. 
-## If the inverse has already been calculated (and the matrix has not changed), 
-## then the cachesolve should retrieve the inverse from the cache. 
+## If the inverse has already been calculated i.e. inv is not null, 
+## then the cachesolve retrieve the inverse from the cache. 
+## If the inverse is not calculated, it uses solve() to calculate the inverse of the matrix
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
